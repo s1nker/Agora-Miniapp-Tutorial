@@ -570,7 +570,7 @@ Page({
       client.init(APPID, () => {
         Utils.log(`client init success`);
         // pass key instead of undefined if certificate is enabled
-        client.join(undefined, channel, uid, () => {
+        client.join("006272238450a764397b0aa3a10acbdda58IABzMfPf6Nm3HyapU5eHHCurHIoBBsc7tTROzdkhNYGIm49auH4AAAAAEACHtvL/L0Z0YQEAAQAnRnRh", channel, uid, () => {
           client.setRole(this.role);
           Utils.log(`client join channel success`);
           //and get my stream publish url
@@ -622,7 +622,7 @@ Page({
         Utils.log(`client init success`);
         // pass key instead of undefined if certificate is enabled
         Utils.log(`rejoin with uids: ${JSON.stringify(uids)}`);
-        client.rejoin(undefined, channel, uid, uids, () => {
+        client.rejoin("006272238450a764397b0aa3a10acbdda58IABzMfPf6Nm3HyapU5eHHCurHIoBBsc7tTROzdkhNYGIm49auH4AAAAAEACHtvL/L0Z0YQEAAQAnRnRh", channel, uid, uids, () => {
           Utils.log(`client join channel success`);
           if (this.isBroadcaster()) {
             client.publish(url => {

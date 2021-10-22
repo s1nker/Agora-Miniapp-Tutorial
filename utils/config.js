@@ -1,4 +1,4 @@
-const APPID = "";
+const APPID = "272238450a764397b0aa3a10acbdda58";
 
 if(APPID === ""){
   wx.showToast({
