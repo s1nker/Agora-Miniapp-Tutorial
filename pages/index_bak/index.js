@@ -19,16 +19,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.channel = "";
-    // this.uid = Utils.getUid();
-    // this.lock = false;
-    // let userInfo = wx.getStorageSync("userInfo");
-    // if (userInfo){
-    //   this.setData({
-    //     hasUserInfo: true,
-    //     userInfo: userInfo
-    //   });
-    // }
+    this.channel = "";
+    this.uid = Utils.getUid();
+    this.lock = false;
+    let userInfo = wx.getStorageSync("userInfo");
+    if (userInfo){
+      this.setData({
+        hasUserInfo: true,
+        userInfo: userInfo
+      });
+    }
   },
 
   /**
@@ -62,76 +62,14 @@ Page({
    * callback to get user info
    * using wechat open-type
    */
-  onGotUserInfo: function (e) {
-    console.log("getUserProfile");
-    wx.getUserProfile({
-      desc: "获取你的昵称、头像、地区及性别",
-      success: (res) => {
-        console.log('getUserProfile success', res);
-        this.userInfo = res.userInfo
-        wx.setStorage({
-          key: 'userInfo',
-          data: res.userInfo,
-        })
-      },
-      fail: function (err) {
-        console.log(err);
-      }
+  onGotUserInfo: function(e){
+    let userInfo = e.detail.userInfo || {};
+    // store data for next launch use
+    wx.setStorage({
+      key: 'userInfo',
+      data: userInfo,
     })
-  },
-  getPhoneNumber: function (e) {
-    console.log("login");
-    wx.login({
-      success: (res) => {
-        console.log("login success");
-        if (res.code) {
-          console.log(e)
-          this.postLogin(e, res.code)
-        }
-      },
-      fail: function (err) {
-        console.log("login fail");
-        console.log(err);
-      }
-    })
-  },
-  postLogin: function (phoneObject, code) { //提交至后端
-    var data = {
-      encryptedData: phoneObject.detail.encryptedData,
-      iv: phoneObject.detail.iv,
-      code: code,
-      userInfo: this.userInfo,
-    }
-    wx.request({
-      url: 'https://api.archalpha.com/rest/pintos/wx/auth', //仅为示例，并非真实的接口地址
-      data,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        if (res.data.success == 0) {
-          const result = res.data.result
-          if (result.id > 0) {
-            wx.setStorageSync("x-token", result.sessionToken);
-          }
-        } else {
-          console.log(res)
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            mask: true
-          })
-        }
-      },
-      fail(e) {
-        console.log(e)
-        wx.showToast({
-          title: res.data.message,
-          icon: 'none',
-          mask: true
-        })
-      }
-    })
+    this.onJoin(userInfo);
   },
   /**
    * check if join is locked now, this is mainly to prevent from clicking join btn to start multiple new pages
