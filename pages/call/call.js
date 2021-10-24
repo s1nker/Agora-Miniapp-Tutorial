@@ -139,10 +139,11 @@ Page({
         clearTimeout(self.timer);
       }
       // agora
+      const agoraData = wx.getStorageSync("agoraData") || {}
       const {
         id
-      } = this.agoraData;
-      this.client.unsubscribe(id, (url, rotation) => {
+      } = agoraData;
+      self.client.unsubscribe(id, (url, rotation) => {
         console.log(`stream ${id} unsubscribed successful`);
         wx.hideLoading()
         wx.navigateBack()
