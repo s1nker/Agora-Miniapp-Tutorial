@@ -144,6 +144,8 @@ Page({
       } = this.agoraData;
       this.client.unsubscribe(id, (url, rotation) => {
         console.log(`stream ${id} unsubscribed successful`);
+        wx.hideLoading()
+        wx.navigateBack()
       }, e => {
         console.log(`stream unsubscribed failed ${e} ${e.code} ${e.reason}`);
       });
