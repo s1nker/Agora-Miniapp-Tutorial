@@ -1,0 +1,14 @@
+<!-- pages/test/test.wxml -->
+<view class="agora-bg">
+  <view class="content">
+    <view>门锁列表：</view>
+    <view class="form-section flex-center-column">
+      <view wx:for="{{list}}" wx:key="index">
+        <button plain="true" open-type="getUserInfo" bindtap='onGoToDetail' class="joinBtn" data-uid="{{item.doorUuid}}">
+          {{item.modelNo}}
+        </button>
+      </view>
+    </view>
+    <view style="padding: 0rpx 20rpx; margin-top: 40rpx"></view>
+  </view>
+</view>

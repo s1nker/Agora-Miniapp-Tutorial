@@ -1,0 +1,15 @@
+<!-- pages/test/test.wxml -->
+<view class="agora-bg">
+  <view class="content flex-center-column">
+    <view class="form-section flex-center-column">
+      <view style="font-weight: bold;">uid：</view>
+      <view style="word-break: break-all;">{{uid}}</view>
+      <view style="font-weight: bold;">门锁名称：</view>
+      <view >{{detail.modelNo}}</view>
+    </view>
+    <view class="form-section flex-center-column loading-tips">
+      正在等待视频通话请求……
+    </view>
+    <view style="padding: 0rpx 20rpx; margin-top: 40rpx"></view>
+  </view>
+</view>

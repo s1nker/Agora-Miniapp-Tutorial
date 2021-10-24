@@ -18,8 +18,6 @@ page {
 
 .content .logo-section .h1{
   margin-bottom: 10rpx;
-  font-weight: bold;
-  font-size: 40rpx;
 }
 
 .content .user-section{
@@ -90,4 +88,9 @@ page {
   font-size: 24rpx;
   margin-bottom: 32rpx;
   color: #63C5E6;
+}
+
+.content .loading-tips {
+  font-size: 24rpx;
+  margin-top: 100rpx;
 }

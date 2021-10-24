@@ -1,16 +1,17 @@
 <!--index.wxml-->
-<view class=" agora-bg">
+<view class="agora-bg">
   <view class="content flex-center-column">
     <view class="logo-section flex-center-column">
-      <text class="h1">方块智能</text>
+      <text class="h1">可视通话测试</text>
     </view>
     <view class="user-section flex-center-column">
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </view>
     <view class="form-section flex-center-column">
-      <button plain="true" open-type="getUserInfo" bindtap='onGotUserInfo' disabled="{{disableJoin}}" class="joinBtn">账号授权</button>
-      <button plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="sumbit" disabled="{{disableJoin}}" class="joinBtn">手机授权</button>
+      <button plain="true" open-type="getUserInfo" bindtap='onGotUserInfo' class="joinBtn">账号授权</button>
+      <button plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="sumbit" class="joinBtn">手机授权</button>
+      <button plain="true" bindtap="onGoToDeviceList" class="sumbit" class="joinBtn">设备列表</button>
     </view>
     <view class="footer flex-center-column">
       <text>Powered by Agora. Build v1.1.1180907</text>
