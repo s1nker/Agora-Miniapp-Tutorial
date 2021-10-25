@@ -13,7 +13,7 @@ Page({
     count: 0,
     countInterval: null,
     timer: null,
-    testEnv: false,
+    testEnv: true,
     APPID: '272238450a764397b0aa3a10acbdda58',
     playSrc: '',
   },
@@ -102,7 +102,7 @@ Page({
       } = agoraData;
       this.initAgoraChannel(id, channel_name).then(url => {
         console.log(`channel: ${channel_name}, uid: ${id}`);
-        console.log(`pushing ${url}`);
+        // console.log(`pushing ${url}`);
         // let ts = new Date().getTime();
         //  if (this.isBroadcaster()) {
         // // first time init, add pusher media to view
@@ -160,7 +160,7 @@ Page({
       console.log('start init');
       if (self.testEnv) {
         client = new AgoraMiniappSDK.Client({
-          servers: ["wss://miniapp.agoraio.cn/120-131-14-112/api"]
+          servers: ["wss://miniapp.agoraio.cn/117-21-184-29/api"]
         });
       } else {
         client = new AgoraMiniappSDK.Client()
