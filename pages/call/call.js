@@ -149,6 +149,8 @@ Page({
         wx.navigateBack()
       }, e => {
         console.log(`stream unsubscribed failed ${e} ${e.code} ${e.reason}`);
+        wx.hideLoading()
+        wx.navigateBack()
       });
     }
   },
@@ -237,6 +239,7 @@ Page({
             break;
           }
         }
+        console.log(`stream url: ${url}`)
 
         if (!matchItem) {
           //if not existing, add new media
