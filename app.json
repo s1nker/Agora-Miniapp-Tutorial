@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/meeting/meeting",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/devices/devices",
+    "pages/call/call",
+    "pages/device-detail/device-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
