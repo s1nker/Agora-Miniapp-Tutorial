@@ -2,11 +2,9 @@
 <view class="agora-bg">
   <view class="content flex-center-column">
 		<image :src="imgUrl" mode="aspectFill" style="" src="{{path}}"></image>
-    <block>
-        <live-player id="player" src="{{playUrl}}" mode="RTC" min-cache="0.1" max-cache="0.3" object-fit="fillCrop" style="height:250px; width: 100%; margin-top: 20rpx;" />
-        <!-- <agora-player id="rtc-player" width="500" height="500" url="{{playUrl}}">
-        </agora-player> -->
-    </block> 
+    <live-player id="player" autoplay src="{{playSrc}}" mode="RTC" min-cache="0.1" max-cache="0.3" object-fit="fillCrop" bindstatechange="playerStateChange" style="height:250px; width: 100%; margin-top: 20rpx;" />
+    <!-- <agora-player id="rtc-player" width="500" height="500" url="{{playSrc}}">
+    </agora-player> -->
     <view class="form-section flex-center-column">
       <button plain="true" bindtap='pickUp' data-type="1" class="joinBtn">接听</button>
       <button plain="true" bindtap='pickUp' data-type="2" class="joinBtn">挂断</button>

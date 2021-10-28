@@ -14,8 +14,9 @@ Page({
     countInterval: null,
     timer: null,
     testEnv: true,
-    APPID: '272238450a764397b0aa3a10acbdda58',
-    playSrc: '',
+    // APPID: '272238450a764397b0aa3a10acbdda58',
+    APPID: '4a69f07b0bb54f1a9aca890958261e1f',
+    playSrc: 'rtmp://58.200.131.2:1935/livetv/hunantv',
   },
 
   /**
@@ -205,8 +206,10 @@ Page({
       });
     });
   },
-  subscribeEvents: function (client) {
-    console.log('subscribe events')
+  playerStateChange: function (e) {
+    console.log("live-player code:", e.detail.code);
+  },
+  subscribeEvents: function(client) {
     /**
      * sometimes the video could be rotated
      * this event will be fired with ratotion
@@ -255,6 +258,9 @@ Page({
           this.playSrc = url;
           this.setData({
             playSrc: url,
+          }, () => {
+            let context = wx.createLivePlayerContext("player", this);
+            context.play();
           })
         } else {
           // if existing, update property
@@ -266,6 +272,9 @@ Page({
           this.playSrc = url;
           this.setData({
             playSrc: url,
+          }, () => {
+            let context = wx.createLivePlayerContext("player", this);
+            context.play();
           })
         }
       }, e => {
