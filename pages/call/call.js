@@ -156,17 +156,21 @@ Page({
   },
   
   initAgoraChannel: function() {
-    var self = this;
+    const self = this;
     return new Promise((resolve, reject) => {
       let client = {}
       console.log('start init');
-      if (self.testEnv) {
+      console.log('test env', self.data.testEnv);
+      if (self.data.testEnv) {
         client = new AgoraMiniappSDK.Client({
           servers: ["wss://miniapp.agoraio.cn/117-21-184-29/api"]
         });
       } else {
         client = new AgoraMiniappSDK.Client()
       }
+      // client = new AgoraMiniappSDK.Client({
+      //   servers: ["wss://miniapp.agoraio.cn/117-21-184-29/api"]
+      // });
       //subscribe stream events
       console.log('subscribeEvents');
       self.subscribeEvents(client);
@@ -201,7 +205,8 @@ Page({
       });
     });
   },
-  subscribeEvents: function(client) {
+  subscribeEvents: function (client) {
+    console.log('subscribe events')
     /**
      * sometimes the video could be rotated
      * this event will be fired with ratotion
